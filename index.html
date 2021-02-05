@@ -57,14 +57,14 @@
             de autômato disponível, <a href="#automatos">clique</a> para mais informações.
             <!--            <code class="small">padding-top: 60px;</code> on the <code class="small">main &gt; .container</code>.-->
         </p>
-<!--        <div class="row">-->
-<!--            <div class="col-sm-6">-->
-<!--                <div id="mynetwork" class="card card-automato"></div>-->
-<!--            </div>-->
-<!--            <div class="col-sm-6">-->
-<!--                <div id="mynetwork2" class="card card-automato"></div>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="row">-->
+        <!--            <div class="col-sm-6">-->
+        <!--                <div id="mynetwork" class="card card-automato"></div>-->
+        <!--            </div>-->
+        <!--            <div class="col-sm-6">-->
+        <!--                <div id="mynetwork2" class="card card-automato"></div>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <div class="row">
             <div class="col-sm-6">
@@ -132,20 +132,19 @@
 <script type="text/javascript">
     // create an array with nodes
     var nodes = new vis.DataSet([
-        {id: 1, label: "Node 1"},
-        {id: 2, label: "Node 2"},
-        {id: 3, label: "Node 3"},
-        {id: 4, label: "Node 4"},
-        {id: 5, label: "Node 5"}
+        {id: 0, label: "S0"},
+        {id: 1, label: "S1"},
+        {id: 2, label: "S2"},
     ]);
 
     // create an array with edges
     var edges = new vis.DataSet([
-        {from: 1, to: 3},
-        {from: 1, to: 2},
-        {from: 2, to: 4},
-        {from: 2, to: 5},
-        {from: 3, to: 3}
+        {from: 0, to: 0, label: '0',},
+        {from: 0, to: 1, label: '1111', smooth: {type: 'vertical', roundness: 0.4}},
+        {from: 1, to: 0, label: '0', smooth: {type: 'horizontal', roundness: -2.2}},
+        {from: 1, to: 2, label: '0'},
+        {from: 2, to: 1, label: '0'},
+        {from: 2, to: 2, label: '1'}
     ]);
 
     // create a network
@@ -163,7 +162,36 @@
     var options = {
         autoResize: true,
         height: '100%',
-        width: '100%'
+        width: '100%',
+        edges: {
+            arrows: {
+                from: {
+                    enabled: true,
+                    imageHeight: undefined,
+                    imageWidth: undefined,
+                    scaleFactor: 1,
+                    src: undefined,
+                    type: "arrow"
+                },
+                smooth: {
+                    enabled: true,
+                    forceDirection: true
+
+                }
+            },
+        },
+        arrowStrikethrough: true,
+        interaction: {
+            dragNodes: false,
+            // zoomView: false,
+            // dragView: false
+        },
+        physics: false,
+        layout: {
+            hierarchical: {
+                direction: 'UD'
+            }
+        }
     };
     var network = new vis.Network(container, data, options);
 
@@ -181,12 +209,6 @@
         edges: edges
     };
 
-
-    options = {
-        autoResize: true,
-        height: '100%',
-        width: '100%'
-    };
     network = new vis.Network(container, data, options);
 
     network.on("zoom", function () { //while zooming
