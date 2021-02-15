@@ -45,10 +45,9 @@ hr {
     user-select: none;
 }
 
-.active {
+.nav-link.active {
     color: rgba(255, 255, 255, .75);
 }
-
 
 .card-automato {
     width: 100%;
@@ -61,6 +60,14 @@ hr {
     /*margin: 10px;*/
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: var(--twitter-blue-darker);
+    background-color: var(--color-faint);
+}
+
+.my-tabs a.nav-link {
+    color: var(--twitter-blue-darker);
+}
 /*.card-automato:hover {*/
 /*    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
 /*}*/

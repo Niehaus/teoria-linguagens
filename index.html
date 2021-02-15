@@ -70,16 +70,16 @@
             <div class="col-sm-6">
                 <div class="card mt-2">
                     <div class="card-body">
-                        <h5 class="card-title">AFD</h5>
-                        <div id="mynetwork2" class="card-automato"></div>
+                        <h5 class="card-title"><span class="badge rounded-pill bg-secondary">AFD</span></h5>
+                        <div id="mynetwork" class="card-automato"></div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="card mt-2">
                     <div class="card-body">
-                        <h5 class="card-title">AFND</h5>
-                        <div id="mynetwork" class="card-automato"></div>
+                        <h5 class="card-title"><span class="badge rounded-pill bg-secondary">AFND</span></h5>
+                        <div id="mynetwork2" class="card-automato"></div>
                     </div>
                 </div>
             </div>
@@ -91,11 +91,19 @@
     <div class="container">
         <hr>
         <h1 class="mt-5">Conteúdo</h1>
-        <div class="p">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum saepe dicta magnam, laboriosam animi
-            veritatis adipisci doloribus odio officia eum ad illo voluptatum minus aspernatur incidunt cum culpa
-            tenetur! Ratione.
+        <div class="d-flex align-items-start my-tabs m-3">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">AFD</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">AFND</a>
+<!--                <a class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Automato 3</a>-->
+            </div>
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">AFD blabla</div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">AFND blabla</div>
+<!--                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>-->
+            </div>
         </div>
+
     </div>
 </section>
 
@@ -122,102 +130,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-<script src="custom.js"></script>
 <script type="text/javascript" src="https://unpkg.com/vis-data@latest/peer/umd/vis-data.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/vis-network@latest/peer/umd/vis-network.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/vis-network/styles/vis-network.min.css"/>
-<!-- You may include other packages like Vis Timeline or Vis Graph3D here. -->
-
-
-<script type="text/javascript">
-    // create an array with nodes
-    var nodes = new vis.DataSet([
-        {id: 0, label: "S0"},
-        {id: 1, label: "S1"},
-        {id: 2, label: "S2"},
-    ]);
-
-    // create an array with edges
-    var edges = new vis.DataSet([
-        {from: 0, to: 0, label: '0',},
-        {from: 0, to: 1, label: '1111', smooth: {type: 'vertical', roundness: 0.4}},
-        {from: 1, to: 0, label: '0', smooth: {type: 'horizontal', roundness: -2.2}},
-        {from: 1, to: 2, label: '0'},
-        {from: 2, to: 1, label: '0'},
-        {from: 2, to: 2, label: '1'}
-    ]);
-
-    // create a network
-    var container = document.getElementById("mynetwork");
-    var data = {
-        nodes: nodes,
-        edges: edges
-    };
-
-    // define zoom limits
-    var afterzoomlimit = { //here we are setting the zoom limit to move to
-        scale: 0.70,
-    }
-
-    var options = {
-        autoResize: true,
-        height: '100%',
-        width: '100%',
-        edges: {
-            arrows: {
-                from: {
-                    enabled: true,
-                    imageHeight: undefined,
-                    imageWidth: undefined,
-                    scaleFactor: 1,
-                    src: undefined,
-                    type: "arrow"
-                },
-                smooth: {
-                    enabled: true,
-                    forceDirection: true
-
-                }
-            },
-        },
-        arrowStrikethrough: true,
-        interaction: {
-            dragNodes: false,
-            // zoomView: false,
-            // dragView: false
-        },
-        physics: false,
-        layout: {
-            hierarchical: {
-                direction: 'UD'
-            }
-        }
-    };
-    var network = new vis.Network(container, data, options);
-
-
-    network.on("zoom", function () { //while zooming
-        if (network.getScale() <= 0.50) {//the limit you want to stop at
-            network.moveTo(afterzoomlimit); //set this limit so it stops zooming out here
-        }
-    });
-
-
-    container = document.getElementById("mynetwork2");
-    data = {
-        nodes: nodes,
-        edges: edges
-    };
-
-    network = new vis.Network(container, data, options);
-
-    network.on("zoom", function () { //while zooming
-        if (network.getScale() <= 0.50) {//the limit you want to stop at
-
-            network.moveTo(afterzoomlimit); //set this limit so it stops zooming out here
-        }
-    });
-</script>
+<script src="custom.js"></script>
 </body>
 </html>
 
