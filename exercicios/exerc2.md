@@ -6,69 +6,34 @@ Teoria de Linguagens <br> Universidade Federal de São João del-Rei<br>
 
 ## 1 - Complete abaixo com a definição de cada um dos conceitos apresentados.
 
-- Alfabeto: Conjunto finito de símbolos ou caracteres;
-- Palavra: Sequência finita de símbolos justapostos;
-- Linguagem Formal: Conjunto de todos as palavras da linguagem L sobre um alfabeto
+- Autômato: máquina ou robô que se opera de maneira automática
+- Estado: possíveis casos que um autômato pode assumir
+- Transição: salto para outro estado a partir de uma entrada
+- Função Programa: comanda as leituras; define o estado da máquina
 
-## 2 - O que é uma gramática e o significa cada elemento da quádrupla necessária para definir uma G= (V, T, P, S)?
+## 2 -  O que significa cada elemento da quintúpla necessária para definir um autômato M = (Q, Σ, δ, q0, F )?
 
-- V: Conjunto finito de símbolos variáveis ou não-terminais
-- T: Conjunto finito de símbolos terminais disjunto de V
-- P: Regra de produção ou produção
-- S: Elemento distinguido de V: símbolo inicial ou variável inicial
+- Q: conjunto de estados possíveis do autômato (finito)
+- Σ: alfabetos de símbolos de entrada
+- δ: função programa ou função de transição
+- q0: estado inicial
+- F: conjunto de estados finais
 
-## 3 - Elabore uma gramática para cada uma das seguintes linguagens
+## 3 - Elabore um autômato cada uma das seguintes linguagens
 
-### a) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não possui o símbolo ‘a’ como prefixo.
+### a) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não possui o símbolo 'a' como prefixo e não possui o símbolo 'c' como sufixo
 
-    V = { X }
-    T = {a, b, c}
-    S = { S0 }
-    P = { S0 -> bX | cX 
-          X -> a | b | c
-          X -> aX | bX | cX
-          X -> ε
-        }
+<div style="text-align:center"><img src="../exercicios/aut_finito/exerc3a.png"/></div>
 
 
-### b) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não o símbolo ‘c’ como sufixo.
+### b) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que possuem aab ou bba como subpalavra.
 
-    V = { X }
-    T = {a, b}
-    S = { S0 }
-    P = { S0 -> cX 
-          X -> a | b 
-          X -> aX | bX 
-          X -> ε
-        }
+<div style="text-align:center"><img src="../exercicios/aut_finito/exerc3b.png"/></div>
 
-### c) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que possuem w = aab como subpalavra
+### c) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1,2,3,...,9} tal que w é par.
 
-    V = { X, Y }
-    T = {a, b, c}
-    S = { S0 }
-    P = { S0 -> XaabY 
-          X -> Xa | Xb | Xc
-          Y -> aY | bY | cY
-          X -> a | b | c
-          Y -> a | b | c
-          X -> ε
-          Y -> ε
-        }
+<div style="text-align:center"><img src="../exercicios/aut_finito/exerc3c.png"/></div>
 
+### d) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1} tal que o número de ocorrências de 0 é par e o número de ocorrências de 1 é ímpar.
 
-### d) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1,2,3,...,9} tal que w é par.
-
-    V = { X, Y, B, A }
-    T = {0, 2, 4, 6, 8}
-    S = { S0 }
-    P = { S0 -> XY
-          X -> XB
-          B -> 0 | ... | 9
-          Y -> YA
-          A -> 0 | 2 | 4 | 6 | 8
-          X -> ε
-          Y -> ε
-          A -> ε
-          B -> ε
-        }
+<div style="text-align:center"><img src="../exercicios/aut_finito/exerc3d.png"/></div>

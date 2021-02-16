@@ -6,22 +6,20 @@ Teoria de Linguagens <br> Universidade Federal de São João del-Rei<br>
 
 ## 1 - Complete abaixo com a definição de cada um dos conceitos apresentados.
 
-- Autômato: ...
-- Estado: ...
-- Transição: ...
-- Função Programa: ...
+- Alfabeto: Conjunto finito de símbolos ou caracteres;
+- Palavra: Sequência finita de símbolos justapostos;
+- Linguagem Formal: Conjunto de todos as palavras da linguagem L sobre um alfabeto
 
-## 2 -  O que significa cada elemento da quintúpla necessária para definir um autômato M = (Q, Σ, δ, q0, F )?
+## 2 - O que é uma gramática e o significa cada elemento da quádrupla necessária para definir uma G= (V, T, P, S)?
 
-- Q: ...
-- Σ: ...
-- δ: ...
-- q0: ...
-- F: ...
+- V: Conjunto finito de símbolos variáveis ou não-terminais
+- T: Conjunto finito de símbolos terminais disjunto de V
+- P: Regra de produção ou produção
+- S: Elemento distinguido de V: símbolo inicial ou variável inicial
 
-## 3 - Elabore um autômato cada uma das seguintes linguagens
+## 3 - Elabore uma gramática para cada uma das seguintes linguagens
 
-### a) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não possui o símbolo 'a' como prefixo e não possui o símbolo 'c' como sufixo
+### a) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não possui o símbolo ‘a’ como prefixo.
 
     V = { X }
     T = {a, b, c}
@@ -33,7 +31,7 @@ Teoria de Linguagens <br> Universidade Federal de São João del-Rei<br>
         }
 
 
-### b) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que possuem aab ou bba como subpalavra.
+### b) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que não o símbolo ‘c’ como sufixo.
 
     V = { X }
     T = {a, b}
@@ -44,7 +42,22 @@ Teoria de Linguagens <br> Universidade Federal de São João del-Rei<br>
           X -> ε
         }
 
-### c) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1,2,3,...,9} tal que w é par.
+### c) Conjunto de todas as palavras sobre o alfabeto Σ = {a,b,c} que possuem w = aab como subpalavra
+
+    V = { X, Y }
+    T = {a, b, c}
+    S = { S0 }
+    P = { S0 -> XaabY 
+          X -> Xa | Xb | Xc
+          Y -> aY | bY | cY
+          X -> a | b | c
+          Y -> a | b | c
+          X -> ε
+          Y -> ε
+        }
+
+
+### d) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1,2,3,...,9} tal que w é par.
 
     V = { X, Y, B, A }
     T = {0, 2, 4, 6, 8}
@@ -59,5 +72,3 @@ Teoria de Linguagens <br> Universidade Federal de São João del-Rei<br>
           A -> ε
           B -> ε
         }
-
-### c) Conjunto de todas as palavras w sobre o alfabeto Σ = {0,1} tal que o número de ocorrências de 0 é par e o número de ocorrências de 1 é ímpar.
