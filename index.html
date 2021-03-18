@@ -456,8 +456,8 @@
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-5">
-                        <label for="inputEntrada" class="sr-only">Digite a Entrada</label>
-                        <input type="text" class="form-control mt-2" id="inputEntrada" placeholder="Entrada..">
+                        <label for="inputEntrada" class="sr-only">Ex. Entrada: 7,0b,7</label>
+                        <input type="text" class="form-control mt-2" id="inputEntrada" placeholder="Digite aqui..">
                     </div>
                     <div class="col-lg-12 mt-3">
                         <button class="btn btn-primary" onclick="single_entry()">Inicia AFD por Input</button>
@@ -467,12 +467,8 @@
             <div class="col-lg-6 output-col">
                 <!--                <pre id="output_unique"></pre>-->
                 <div class="output-area">
-                    <div class="out-text-area">
-                        <!--                        <div class="output-item">-->
-                        <!--                            <p class="entrada-out">7097</p>-->
-                        <!--                            <img class="output-icon" src="icons/icon-aceita.png" alt="">-->
-                        <!--                            <p class="description"></p>-->
-                        <!--                        </div>-->
+                    <div id="single-output" class="out-text-area">
+
                         <!--                        <div class="output-item">-->
                         <!--                            <p class="entrada-out">7097</p>-->
                         <!--                            <img class="output-icon" src="icons/icon-naceita.png" alt="">-->
@@ -630,14 +626,9 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col-lg-4 afd-trans">
+            <div class="col-lg-3 afd-trans">
                 <div class="output-area" style="margin-left: 0; margin-right: 0;">
-                    <div class="out-text-area">
-                        <div class="afd-item">
-                            <span class="badge rounded-pill afd-pill-t afd-pill">  </span>
-                            <img src="icons/arrow.png" alt="" style="width: 25px;display: inline-block;">
-                            <span class="badge rounded-pill afd-pill-next afd-pill">q0</span>
-                        </div>
+                    <div id="saida-afd" class="out-text-area">
 <!--                        <div class="afd-item">-->
 <!--                            <span class="badge rounded-pill afd-pill-t afd-pill">q0, 7</span>-->
 <!--                            <img src="icons/arrow.png" alt="" style="width: 25px;display: inline-block;">-->

@@ -20,7 +20,9 @@
 /* CSS of Tags */
 body {
     color: var(--color-darkest-gray);
+    font-family: Roboto, sans-serif;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--twitter-black);
@@ -44,6 +46,9 @@ hr {
     color: var(--color-deep-gray);
 }
 
+.btn, input {
+    font-family: inherit;
+}
 
 /* CSS of classes */
 .bd-placeholder-img {
@@ -116,6 +121,7 @@ pre, .output-area {
 .entrada-out, .description {
     margin: 0;
     display: inline-block;
+    min-width: 150px;
 }
 
 .afd-item {
@@ -126,17 +132,19 @@ pre, .output-area {
     margin-right: 0;
     max-height: 400px;
     height: auto;
-    width: 150px;
+    /*width: 200px;*/
     text-align: center;
 }
 
 .afd-trans .output-area .out-text-area {
     max-height: 400px;
+    height: auto;
 }
 
 .afd-pill {
     text-align: center;
     padding: 8px 8px;
+    width: 71px;
 }
 
 .afd-pill-t {
@@ -145,6 +153,14 @@ pre, .output-area {
 
 .afd-pill-f {
     background-color: var(--pill-final) !important;
+}
+
+.afd-pill-nf {
+    background-color: #519B97 !important;
+}
+
+.afd-pill-i {
+    background-color: lightcoral !important;
 }
 
 .afd-pill-next {
