@@ -7,6 +7,14 @@
     --twitter-black: #14171a;
     --color-deep-gray: #657786; /* deactivated things*/
     --color-dark-gray-blue: #192734; /* twitter almost navy blue*/
+
+    --stroke-color: #d2d2dc;
+    --fill-color: #f2f3f5;
+
+    --stroke-active: #A1B1D9;
+    --fill-active: #7285C7;
+
+    --pill-final: #87B1AD;
 }
 
 /* CSS of Tags */
@@ -36,6 +44,7 @@ hr {
     color: var(--color-deep-gray);
 }
 
+
 /* CSS of classes */
 .bd-placeholder-img {
     font-size: 1.125rem;
@@ -60,6 +69,14 @@ hr {
     /*margin: 10px;*/
 }
 
+.card-body {
+    text-align: center;
+}
+
+h5.card-title {
+    text-align: left !important;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: var(--twitter-blue-darker);
     background-color: var(--color-faint);
@@ -67,6 +84,71 @@ hr {
 
 .my-tabs a.nav-link {
     color: var(--twitter-blue-darker);
+}
+
+pre, .output-area {
+    background-color: var(--color-faint);
+    border: 1px solid var(--stroke-color);
+    border-radius: .25rem;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.out-text-area {
+    height: 100px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.output-item{
+    margin: 5px 0;
+}
+
+.output-icon {
+    width: 25px;
+    display: inline-block;
+    margin-left: 5px;
+    padding-bottom: 7px;
+}
+
+.entrada-out, .description {
+    margin: 0;
+    display: inline-block;
+}
+
+.afd-item {
+    margin: 8px 0;
+}
+.afd-trans .output-area {
+    margin-left: 0;
+    margin-right: 0;
+    max-height: 400px;
+    height: auto;
+    width: 150px;
+    text-align: center;
+}
+
+.afd-trans .output-area .out-text-area {
+    max-height: 400px;
+}
+
+.afd-pill {
+    text-align: center;
+    padding: 8px 8px;
+}
+
+.afd-pill-t {
+    background-color: var(--fill-active) !important;
+}
+
+.afd-pill-f {
+    background-color: var(--pill-final) !important;
+}
+
+.afd-pill-next {
+    background-color: var(--stroke-active) !important;
 }
 /*.card-automato:hover {*/
 /*    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
@@ -81,8 +163,20 @@ hr {
 
 /* X-Small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
+    .my-tabs {
+        flex-direction: column;
+        align-items: center !important;
+    }
 
+    #v-pills-tab {
+        flex-direction: row !important;
+    }
+
+    .col-lg-6 {
+        margin-top: 16px;
+    }
 }
+
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
 
@@ -108,5 +202,20 @@ hr {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
+
 }
+
+@media (min-width: 576px) {
+    .output-col {
+        margin-top: 16px;
+    }
+}
+
+@media (min-width: 991.98px) {
+    .output-col {
+        margin-top: 0;
+    }
+}
+
+
 

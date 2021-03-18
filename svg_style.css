@@ -1,0 +1,30 @@
+/* Style SVG Graph */
+
+.node ellipse {
+    stroke: var(--stroke-color) ;
+    stroke-width: 4;
+    fill: var(--fill-color);
+}
+
+.node.active ellipse {
+    stroke: var(--stroke-active) ;
+    fill: var(--fill-active);
+}
+.node.active text {
+    fill: var(--stroke-active);
+}
+
+.node text, .edge text {
+    fill: var(--stroke-color);
+    font-weight: bold;
+    font-family: inherit;
+}
+
+.edge path, .edge polygon {
+    stroke: var(--stroke-color);
+    stroke-width: 4;
+}
+
+.edge polygon {
+    fill: var(--stroke-color);
+}
