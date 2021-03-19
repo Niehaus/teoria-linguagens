@@ -7,10 +7,10 @@
 }
 
 .node.active ellipse {
-    stroke: var(--stroke-active) ;
+    stroke: var(--stroke-active);
     fill: var(--fill-active);
 }
-.node.active text {
+.node.active text, .edge.active text {
     fill: var(--stroke-active);
 }
 
@@ -23,6 +23,11 @@
 .edge path, .edge polygon {
     stroke: var(--stroke-color);
     stroke-width: 4;
+}
+
+.edge.active path, 
+.edge.active polygon {
+    stroke: var(--stroke-active);
 }
 
 .edge polygon {

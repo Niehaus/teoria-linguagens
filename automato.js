@@ -82,8 +82,37 @@ class HandleUI {
 
     static clear_afd_output() {
     }
-}
 
+    
+
+    static transicao_grafo(estado_atual, estado_anterior) {
+        let nodes = $('#graph-afd .node'),
+            edges = $('#graph-afd .edge')
+        let next_node, old_node, curr_edge
+
+        for (let i = 0; i < nodes.length; i++) {
+            let node_id = $(nodes[i]).attr('id')
+            if(node_id === estado_atual){
+                next_node = $(nodes[i])
+            }else if(node_id === estado_anterior) {
+                old_node = $(nodes[i])
+            }
+        }
+
+        for (let j = 0; j < edges.length; j++) {
+            let edge_id = $(edges[j]).attr('id'),
+            look_edge = estado_anterior+ '-' + estado_atual
+            if(edge_id === look_edge) {
+                curr_edge = $(edges[j])                
+                break;
+            }
+        }
+
+        old_node.addClass('active');
+        setTimeout(() => {  curr_edge.addClass('active'); }, 1000);
+        setTimeout(() => {  next_node.addClass('active'); }, 2000);
+    }
+}
 
 let file_content = ""
 document.getElementById('inputfile')
@@ -136,21 +165,16 @@ function single_entry() {
             estado_atual = afd.le_transicao(estado_atual, fita[i])
 
             //faz transição na ui
+            HandleUI.transicao_grafo(estado_atual, estado_anterior)
             if (estado_atual === 'Indefinido') {
                 //jquery indefine algo na ui
-                HandleUI.out_transicao(
-                    'i', estado_anterior,
-                    fita[i], estado_atual
-                )
+                HandleUI.out_transicao('i', estado_anterior, fita[i], estado_atual)
                 HandleUI.log_final(false, fita.join(''),
                     'Simbolo Indf. no estado ' + estado_anterior, element)
                 break
             } else if (!afd.estado_final(estado_atual) && i === fim_fita) {
                 //jquery nao-final warning na ui
-                HandleUI.out_transicao(
-                    'nf', estado_anterior,
-                    fita[i], estado_atual
-                )
+                HandleUI.out_transicao('nf', estado_anterior, fita[i], estado_atual)
                 HandleUI.log_final(false, fita.join(''),
                     'Fim da Fita em Estado Não Final', element)
                 break
@@ -158,12 +182,8 @@ function single_entry() {
 
             if (afd.estado_final(estado_atual) && i === fim_fita) {
                 //jquery palavra aceita na ui
-                HandleUI.out_transicao(
-                    'f', estado_anterior,
-                    fita[i], estado_atual
-                )
-                HandleUI.log_final(true, fita.join(''),
-                    'Palavra Aceita!', element)
+                HandleUI.out_transicao('f', estado_anterior, fita[i], estado_atual )
+                HandleUI.log_final(true, fita.join(''),'Palavra Aceita!', element)
                 break
             }
 
@@ -178,8 +198,6 @@ function single_entry() {
             break
         }
     }
-    // automato.transicoes['q1']['0b'] q1 lendo 0b -> q2
-
     user_input.val('')
 }
 
