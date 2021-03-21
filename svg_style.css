@@ -30,6 +30,10 @@
     stroke: var(--stroke-active);
 }
 
+.edge.active polygon {
+    fill: var(--stroke-active);
+}
+
 .edge polygon {
     fill: var(--stroke-color);
 }

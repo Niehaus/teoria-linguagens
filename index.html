@@ -36,7 +36,7 @@
                         <a class="nav-link" href="#explain">Conteúdo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#automatos">Autômatos</a>
+                        <a class="nav-link" href="#automatos">Implementação</a>
                     </li>
                     <!--          <li class="nav-item">-->
                     <!--            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
@@ -67,8 +67,6 @@
         <!--                <div id="mynetwork2" class="card card-automato"></div>-->
         <!--            </div>-->
         <!--        </div>-->
-
-
     </div>
 </main>
 
@@ -418,10 +416,19 @@
         <hr>
         <h1 class="mt-5">Implementação do AFD</h1>
         <div class="p">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum saepe dicta magnam, laboriosam animi
-            veritatis adipisci doloribus odio officia eum ad illo voluptatum minus aspernatur incidunt cum culpa
-            tenetur! Ratione.
+            Nesta seção é possível interagir com o AFD implementado de duas maneiras:
+            <ul>
+                <li>
+                    Arquivo de Entrada: 1 palavra por linha.
+                </li>
+                <li>
+                    Inputs de uma palavra por vez.
+                </li>
+            </ul>
+            Observe que os símbolos da palavra devem ser separados por vírgula.
+            O alfabeto deste automato é {7, 0b, 9a}, assim uma entrada válida seria: <b>7,0b,7</b>, .
         </div>
+        <!--  Espaço para input de arquivos -->
         <div class="row mt-4">
             <div class="col-lg-6">
                 <div class="row">
@@ -429,29 +436,19 @@
                         <input type="file" name="inputfile" id="inputfile">
                     </div>
                     <div class="col-lg-12 mt-3">
-                        <button class="btn btn-primary" onclick="load_file_afd()">Inicia AFD por Arquivo</button>
+                        <button class="btn btn-primary" onclick="inicia_afd('arquivo')">Inicia AFD por Arquivo</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 output-col">
-                <!--                <pre id="output"></pre>-->
                 <div class="output-area">
-                    <div class="out-text-area">
-                        <!--                        <div class="output-item">-->
-                        <!--                            <p class="entrada-out">7097</p>-->
-                        <!--                            <img class="output-icon" src="icons/icon-aceita.png" alt="">-->
-                        <!--                            <p class="description"></p>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="output-item">-->
-                        <!--                            <p class="entrada-out">7097</p>-->
-                        <!--                            <img class="output-icon" src="icons/icon-naceita.png" alt="">-->
-                        <!--                            <p class="description">Terminou em Estado Não Final</p>-->
-                        <!--                        </div>-->
+                    <div id='file-output' class="out-text-area">
                     </div>
                 </div>
             </div>
         </div>
         <hr>
+        <!--  Espaço para input de palavras separadamente -->
         <div class="row mt-4">
             <div class="col-lg-6">
                 <div class="row">
@@ -460,33 +457,26 @@
                         <input type="text" class="form-control mt-2" id="inputEntrada" placeholder="Digite aqui..">
                     </div>
                     <div class="col-lg-12 mt-3">
-                        <button class="btn btn-primary" onclick="single_entry()">Inicia AFD por Input</button>
+                        <button class="btn btn-primary" onclick="inicia_afd('input')">Inicia AFD por Input</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 output-col">
-                <!--                <pre id="output_unique"></pre>-->
                 <div class="output-area">
                     <div id="single-output" class="out-text-area">
-
-                        <!--                        <div class="output-item">-->
-                        <!--                            <p class="entrada-out">7097</p>-->
-                        <!--                            <img class="output-icon" src="icons/icon-naceita.png" alt="">-->
-                        <!--                            <p class="description">Terminou em Estado Não Final</p>-->
-                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
         </div>
         <hr>
-
+        <!-- Display SVG do AFD -->
         <div class="row mt-4">
             <div class="col-lg-12">
                 <div class="card mt-2">
                     <div class="card-body">
                         <h5 class="card-title"><span class="badge rounded-pill bg-secondary">AFD</span></h5>
                         <!-- Title: afd Pages: 1 -->
-                        <svg width="556pt" height="135pt"
+                        <svg id="afd_plot" width="556pt" height="135pt"
                              viewBox="0.00 0.00 556.28 135.45" xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="graph-afd" class="graph" transform="scale(1 1) rotate(0) translate(4 131.45)">
@@ -505,7 +495,7 @@
                                     </text>
                                 </g>
                                 <!-- qi -->
-                                <g id="node2" class="node">
+                                <g id="qi" class="node">
                                     <title>qi</title>
                                     <ellipse fill="black" stroke="black" cx="1.8" cy="-86.45" rx="1.8"
                                              ry="1.8"/>
@@ -519,7 +509,7 @@
                                     </text>
                                 </g>
                                 <!-- qi&#45;&gt;q0 -->
-                                <g id="edge1" class="edge">
+                                <g id="edgeqi" class="edge">
                                     <title>qi&#45;&gt;q0</title>
                                     <path fill="none" stroke="black"
                                           d="M3.83,-86.45C7.23,-86.45 18.48,-86.45 30.22,-86.45"/>
@@ -625,18 +615,8 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-lg-3 afd-trans">
-                <div class="output-area" style="margin-left: 0; margin-right: 0;">
-                    <div id="saida-afd" class="out-text-area">
-<!--                        <div class="afd-item">-->
-<!--                            <span class="badge rounded-pill afd-pill-t afd-pill">q0, 7</span>-->
-<!--                            <img src="icons/arrow.png" alt="" style="width: 25px;display: inline-block;">-->
-<!--                            <span class="badge rounded-pill afd-pill-f afd-pill">qf</span>-->
-<!--                        </div>-->
-                    </div>
-                </div>
-            </div>
+        <!-- Espaço para saida final de aceita ou rejeita palavra -->
+        <div id="saida-afd" class="row mt-2">
         </div>
     </div>
 </section>

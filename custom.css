@@ -17,6 +17,7 @@
     --pill-final: #87B1AD;
 }
 
+
 /* CSS of Tags */
 body {
     color: var(--color-darkest-gray);
@@ -26,6 +27,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--twitter-black);
+
+
 }
 
 a {
@@ -134,6 +137,11 @@ pre, .output-area {
     height: auto;
     /*width: 200px;*/
     text-align: center;
+
+}
+
+.afd-trans.output-area {
+    max-width: 250px;
 }
 
 .afd-trans .output-area .out-text-area {
