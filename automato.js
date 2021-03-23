@@ -193,7 +193,7 @@ let file_content = ""
 $('#inputfile').change(function () {
     let fr = new FileReader();
     fr.onload = function () {
-        file_content = fr.result.split(/\r\n/);
+        file_content = fr.result.split(/\r?\n/);
     }
     fr.readAsText(this.files[0]);
 })
@@ -218,7 +218,7 @@ function inicia_afd(comando) {
                 console.log('insert valid file')
                 return 0
             }
-
+            console.log(file_content)
             const forLoop = async _ => {
                 for (let i = 0; i < file_content.length; i++) {
                     data = afd_action(afd, file_content[i])
