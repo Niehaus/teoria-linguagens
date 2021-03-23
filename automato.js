@@ -220,6 +220,7 @@ function inicia_afd(comando) {
             }
             btn = $('#file-btn');
             btn.addClass("disabled")
+
             const forLoop = async _ => {
                 for (let i = 0; i < file_content.length; i++) {
                     data = afd_action(afd, file_content[i])

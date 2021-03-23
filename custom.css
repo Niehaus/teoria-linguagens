@@ -137,7 +137,7 @@ pre, .output-area {
     height: auto;
     /*width: 200px;*/
     text-align: center;
-
+    overflow: auto;
 }
 
 .afd-trans.output-area {
@@ -164,7 +164,8 @@ pre, .output-area {
 }
 
 .afd-pill-nf {
-    background-color: #519B97 !important;
+    /*background-color: #519B97 !important;*/
+    background-color: lightcoral !important;
 }
 
 .afd-pill-i {

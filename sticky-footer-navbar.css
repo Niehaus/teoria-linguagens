@@ -3,5 +3,47 @@
 /* Not required for template or sticky footer method. */
 
 main > .container {
-  padding: 60px 15px 0;
+    padding: 60px 15px 0;
+}
+
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tg td {
+    border-color: var(--color-darkest-gray);
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+
+}
+
+.tg th {
+    border-color: var(--color-darkest-gray);
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-fymr {
+    border-color: var(--color-darkest-gray) !important;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top
+}
+
+.tg .tg-0pky {
+    border-color: var(--color-darkest-gray) !important;
+    text-align: left;
+    vertical-align: top;
+    min-width: 112px;
 }
