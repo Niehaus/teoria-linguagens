@@ -211,14 +211,15 @@ function inicia_afd(comando) {
         ['7', '9a', '0b']
     );
 
-    let data
+    let data = {}, btn
     switch (comando) {
         case 'arquivo':
             if (!file_content) {
                 console.log('insert valid file')
                 return 0
             }
-            console.log(file_content)
+            btn = $('#file-btn');
+            btn.addClass("disabled")
             const forLoop = async _ => {
                 for (let i = 0; i < file_content.length; i++) {
                     data = afd_action(afd, file_content[i])
@@ -228,6 +229,7 @@ function inicia_afd(comando) {
                         data.mensagem, '#file-output')
                     await clear_afd_output()
                 }
+                btn.removeClass("disabled");
             }
             forLoop()
             break
@@ -238,6 +240,9 @@ function inicia_afd(comando) {
                 console.log('insert valid input')
                 return 0
             }
+            btn = $('#input-btn');
+            btn.addClass("disabled");
+
             data = afd_action(afd, fita)
             user_input.val('')
             const paint_clear = async _ => {
@@ -246,9 +251,11 @@ function inicia_afd(comando) {
                 HandleUI.log_final(data.comando, fita,
                     data.mensagem, '#single-output')
                 await clear_afd_output()
+                btn.removeClass("disabled");
             }
             paint_clear()
             break
     }
+
 }
 
